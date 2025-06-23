@@ -249,33 +249,30 @@ const Vendors: React.FC = () => {
   );
 
   return (
-    <div className="p-4 sm:p-6 md:p-8">
-      <div className="flex items-center justify-between mb-6">
+    <div className="p-2 sm:p-4 md:p-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 mb-4">
         <div>
-          <h1 className="text-3xl font-bold flex items-center">
-            <Building2 className="mr-2 h-8 w-8" /> Vendor Management
+          <h1 className="text-xl sm:text-3xl font-bold flex items-center mb-1 sm:mb-0">
+            <Building2 className="mr-2 h-6 sm:h-8 w-6 sm:w-8" /> Vendor Management
           </h1>
-          <p className="text-muted-foreground">
-            Manage your business vendors and suppliers
-          </p>
+          <p className="text-muted-foreground text-xs sm:text-base">Manage your business vendors and suppliers</p>
         </div>
-        <div className="flex gap-3">
-          <Button onClick={() => navigate("/add-vendor")} className="bg-blue-600 hover:bg-blue-700">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
+          <Button onClick={() => navigate("/add-vendor")} className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto text-sm sm:text-base py-2 sm:py-0">
             <Plus className="mr-2 h-4 w-4" /> Add Vendor
           </Button>
-          <Button onClick={() => navigate("/vendor-categories")}>Manage Categories</Button>
+          <Button onClick={() => navigate("/vendor-categories")} className="w-full sm:w-auto text-sm sm:text-base py-2 sm:py-0">Manage Categories</Button>
         </div>
       </div>
-
-      <div className="mb-6">
+      <div className="mb-3 sm:mb-6">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 text-muted-foreground" />
           <input
             type="text"
             placeholder="Search vendors by name, service, or contact..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border rounded-lg"
+            className="w-full pl-9 pr-3 py-2 border rounded-lg text-sm sm:text-base"
           />
         </div>
       </div>
@@ -286,51 +283,51 @@ const Vendors: React.FC = () => {
       {!loading && !error && (
         <>
           {filteredVendors.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
               {filteredVendors.map((vendor) => (
-                <Card key={vendor.VendorID} className="bg-white shadow rounded-xl border border-gray-200 p-6 flex flex-col justify-between min-h-[370px]">
+                <Card key={vendor.VendorID} className="bg-white shadow-sm sm:shadow rounded-lg sm:rounded-xl border border-gray-200 px-4 py-3 sm:p-6 flex flex-col justify-between min-h-[340px] w-full mb-2 sm:mb-0">
                   <CardContent className="p-0 flex-1 flex flex-col">
-                    <div className="flex justify-between items-start mb-2">
+                    <div className="flex flex-row justify-between items-start mb-1 sm:mb-2">
                       <div>
-                        <h3 className="text-2xl font-extrabold mb-1 text-gray-900">{vendor.Name}</h3>
+                        <h3 className="text-base sm:text-2xl font-bold sm:font-extrabold mb-1 text-gray-900">{vendor.Name}</h3>
                         <div className="text-xs text-gray-400 mb-1">ID: {vendor.VendorID}</div>
-                        <span className="inline-block bg-gray-100 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full mb-2 border border-gray-200">{vendor.VendorCategory}</span>
+                        <span className="inline-block bg-gray-100 text-gray-800 text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-full mb-2 border border-gray-200">{vendor.VendorCategory}</span>
                       </div>
-                      <span className="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full self-start border border-green-200">active</span>
+                      <span className="bg-green-100 text-green-800 text-xs font-semibold px-2 sm:px-3 py-1 rounded-full border border-green-200 mt-2 sm:mt-0">active</span>
                     </div>
-                    <div className="space-y-3 text-base text-gray-700 mb-4">
+                    <div className="space-y-1 sm:space-y-3 text-xs sm:text-base text-gray-700 mb-2 sm:mb-4">
                       <div className="flex items-center">
-                        <Building2 className="h-5 w-5 mr-3 text-gray-400" />
+                        <Building2 className="h-4 sm:h-5 w-4 sm:w-5 mr-2 sm:mr-3 text-gray-400" />
                         <span>{vendor.ContactPerson}</span>
                       </div>
                       <div className="flex items-center">
-                        <Mail className="h-5 w-5 mr-3 text-gray-400" />
+                        <Mail className="h-4 sm:h-5 w-4 sm:w-5 mr-2 sm:mr-3 text-gray-400" />
                         <span>{vendor.Email}</span>
                       </div>
                       <div className="flex items-center">
-                        <Phone className="h-5 w-5 mr-3 text-gray-400" />
+                        <Phone className="h-4 sm:h-5 w-4 sm:w-5 mr-2 sm:mr-3 text-gray-400" />
                         <span>{vendor.ContactNumber}</span>
                       </div>
                       <div className="flex items-center">
-                        <MapPin className="h-5 w-5 mr-3 text-gray-400" />
+                        <MapPin className="h-4 sm:h-5 w-4 sm:w-5 mr-2 sm:mr-3 text-gray-400" />
                         <span>{vendor.Address}</span>
                       </div>
                     </div>
-                    <hr className="my-3 border-gray-200" />
+                    <hr className="my-1 sm:my-3 border-gray-200" />
                     {vendor.Notes && (
-                      <div className="mb-4">
-                        <span className="italic text-gray-500 text-sm">"{vendor.Notes}"</span>
+                      <div className="mb-1 sm:mb-4">
+                        <span className="italic text-gray-500 text-xs sm:text-sm">"{vendor.Notes}"</span>
                       </div>
                     )}
-                    <div className="flex gap-4 mt-auto">
+                    <div className="flex flex-row gap-2 mt-auto">
                       <button
-                        className="flex-1 py-2 border border-gray-300 rounded-lg bg-white text-base font-semibold text-gray-900 hover:bg-gray-50 transition"
+                        className="w-full py-2 border border-gray-300 rounded-lg bg-white text-sm sm:text-base font-semibold text-gray-900 hover:bg-gray-50 transition"
                         onClick={() => openEditDialog(vendor)}
                       >
                         Edit
                       </button>
                       <button
-                        className="flex-1 py-2 border border-gray-300 rounded-lg bg-white text-base font-semibold text-red-600 hover:bg-red-50 transition"
+                        className="w-full py-2 border border-gray-300 rounded-lg bg-white text-sm sm:text-base font-semibold text-red-600 hover:bg-red-50 transition"
                         onClick={() => handleDeleteVendor(vendor.VendorID)}
                       >
                         Delete
@@ -351,27 +348,27 @@ const Vendors: React.FC = () => {
       {/* Edit Dialog - mobile responsive */}
       {editingVendor && (
         <div
-          className="z-[9999] fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4 overflow-auto"
+          className="z-[9999] fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-2 sm:p-4 overflow-auto"
           onClick={closeEditDialog}
         >
           <div
-            className="bg-white rounded-md p-4 sm:p-6 w-full max-w-2xl max-h-full overflow-auto shadow-lg sm:mx-auto sm:my-auto relative"
+            className="bg-white rounded-md p-2 sm:p-6 w-full max-w-lg sm:max-w-2xl max-h-full overflow-auto shadow-lg sm:mx-auto sm:my-auto relative"
             onClick={(e) => e.stopPropagation()}
-            style={{ minWidth: "320px" }}
+            style={{ minWidth: "0", maxWidth: "100vw" }}
           >
             <button
-              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900"
+              className="absolute top-2 sm:top-3 right-2 sm:right-3 text-gray-600 hover:text-gray-900"
               onClick={closeEditDialog}
               aria-label="Close edit vendor dialog"
             >
               <span aria-hidden="true">&times;</span>
             </button>
-            <h2 className="text-2xl font-bold mb-1">Edit Vendor Details</h2>
-            <p className="text-gray-500 mb-4">Update vendor-specific information</p>
+            <h2 className="text-lg sm:text-2xl font-bold mb-1">Edit Vendor Details</h2>
+            <p className="text-gray-500 mb-4 text-sm sm:text-base">Update vendor-specific information</p>
             {/* Editable Contact Information Card */}
-            <div className="bg-gray-50 rounded-md p-4 mb-6">
-              <div className="font-semibold mb-2">Contact Information</div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm">
+            <div className="bg-gray-50 rounded-md p-2 sm:p-4 mb-4 sm:mb-6">
+              <div className="font-semibold mb-2 text-sm sm:text-base">Contact Information</div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-2 sm:gap-y-4 text-xs sm:text-sm">
                 <div>
                   <label htmlFor="Name" className="block font-medium mb-1">Company<span className="text-red-500 ml-1">*</span></label>
                   <input
@@ -513,13 +510,13 @@ const Vendors: React.FC = () => {
                   autoComplete="off"
                 />
               </div>
-              <div className="flex justify-start gap-4 mt-6">
-                <Button type="submit" className="bg-green-600 hover:bg-green-700 text-white px-8" disabled={updateLoading}>
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-6">
+                <Button type="submit" className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-8" disabled={updateLoading}>
                   {updateLoading ? "Updating..." : (
                     <span className="flex items-center"><span className="mr-2">&#10003;</span>Update Vendor</span>
                   )}
                 </Button>
-                <Button type="button" variant="outline" className="px-8" onClick={closeEditDialog} disabled={updateLoading}>
+                <Button type="button" variant="outline" className="w-full sm:w-auto px-8" onClick={closeEditDialog} disabled={updateLoading}>
                   Cancel
                 </Button>
               </div>
